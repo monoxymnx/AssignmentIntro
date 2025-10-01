@@ -11,10 +11,45 @@ import {
     TableContainer,
     Button,
     Container,
+    Menu,
+    MenuItem,
+    Collapse,
 } from "@mui/material";
 import Navbar from "../../components/Navbar";
+import { useState } from "react";
+import React from "react";
+
+const progressData = [
+    {
+        week: 1,
+        date: "10/2/69",
+        progress: "10%",
+        detail: "อัปเดตการโปรย",
+        file: "fon.pdf",
+        status: "ผ่าน",
+        comments: [
+            { teacher: "อาจารย์ 1", text: "กลับไปแก้ส่วนนี้มาใหม่" },
+            { teacher: "อาจารย์ 2", text: "สู้ๆ นศ" },
+            { teacher: "อาจารย์ 3", text: "สู้ๆ นศ" },
+        ],
+    },
+    {
+        week: 2,
+        date: "17/2/69",
+        progress: "20%",
+        detail: "สัปดาห์ที่สอง",
+        file: "fonweek2.pdf",
+        status: "ผ่าน",
+        comments: [
+            { teacher: "อาจารย์ 1", text: "กลับไปแก้ส่วนนี้มาใหม่" },
+            { teacher: "อาจารย์ 2", text: "สู้ๆ นศ" },
+            { teacher: "อาจารย์ 3", text: "สู้ๆ นศ" },
+        ],
+    },
+];
 
 export default function ProjectPage() {
+    const [openRow, setOpenRow] = useState<number | null>(null);
     return (
         <>
             {/* Navbar แยกออกมาไม่อยู่ใน Container */}
@@ -70,28 +105,67 @@ export default function ProjectPage() {
                                 </TableRow>
                             </TableHead>
                             <TableBody>
-                                <TableRow>
-                                    <TableCell>1</TableCell>
-                                    <TableCell>-</TableCell>
-                                    <TableCell>-</TableCell>
-                                    <TableCell>อาจารย์ที่ปรึกษา กลับไปแก้ส่วนนี้มาใหม่</TableCell>
-                                    <TableCell>อาจารย์ประจำภาค</TableCell>
-                                    <TableCell>
-                                        <Chip label="ผ่าน" color="success" size="small" />
-                                    </TableCell>
-                                    <TableCell>สู้ๆ นศ</TableCell>
-                                </TableRow>
-                                <TableRow>
-                                    <TableCell>2</TableCell>
-                                    <TableCell>-</TableCell>
-                                    <TableCell>-</TableCell>
-                                    <TableCell>-</TableCell>
-                                    <TableCell>-</TableCell>
-                                    <TableCell>
-                                        <Chip label="ผ่าน" color="success" size="small" />
-                                    </TableCell>
-                                    <TableCell>-</TableCell>
-                                </TableRow>
+                                {progressData.map((row, index) => (
+                                    <React.Fragment key={index}>
+                                        {/* แถวหลัก */}
+                                        <TableRow
+                                            sx={{ backgroundColor: "#e3f2fd" }}
+                                        >
+                                            <TableCell>{row.week}</TableCell>
+                                            <TableCell>{row.date}</TableCell>
+                                            <TableCell>{row.progress}</TableCell>
+                                            <TableCell>{row.detail}</TableCell>
+                                            <TableCell>{row.file}</TableCell>
+                                            <TableCell>
+                                                <Chip
+                                                    label={row.status}
+                                                    color={row.status === "ผ่าน" ? "success" : "warning"}
+                                                    size="small"
+                                                />
+                                            </TableCell>
+                                            <TableCell>
+                                                <Button
+                                                    variant="outlined"
+                                                    onClick={() =>
+                                                        setOpenRow(openRow === index ? null : index)
+                                                    }
+                                                >
+                                                    {openRow === index ? "ซ่อน" : "กดเพื่อดู"}
+                                                </Button>
+                                            </TableCell>
+                                        </TableRow>
+
+                                        {/* แถวคอมเม้นต์ (ซ่อน/โชว์) */}
+                                        <TableRow>
+                                            <TableCell colSpan={7} sx={{ p: 0 }}>
+                                                <Collapse in={openRow === index} timeout="auto" unmountOnExit>
+                                                    <Box sx={{ backgroundColor: "#f5f5f5", p: 2 }}>
+                                                        <Table size="small">
+                                                            <TableHead>
+                                                                <TableRow>
+                                                                    {row.comments.map((c, i) => (
+                                                                        <TableCell key={i} align="center">
+                                                                            {c.teacher}
+                                                                        </TableCell>
+                                                                    ))}
+                                                                </TableRow>
+                                                            </TableHead>
+                                                            <TableBody>
+                                                                <TableRow>
+                                                                    {row.comments.map((c, i) => (
+                                                                        <TableCell key={i} align="center">
+                                                                            <Typography variant="body2">{c.text}</Typography>
+                                                                        </TableCell>
+                                                                    ))}
+                                                                </TableRow>
+                                                            </TableBody>
+                                                        </Table>
+                                                    </Box>
+                                                </Collapse>
+                                            </TableCell>
+                                        </TableRow>
+                                    </React.Fragment>
+                                ))}
                             </TableBody>
                         </Table>
                     </TableContainer>
