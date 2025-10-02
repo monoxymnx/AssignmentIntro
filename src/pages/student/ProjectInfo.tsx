@@ -16,6 +16,7 @@ import {
 import Navbar from "../../components/Navbar";
 import { useState } from "react";
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 const progressData = [
     {
@@ -48,6 +49,7 @@ const progressData = [
 
 export default function ProjectPage() {
     const [openRow, setOpenRow] = useState<number | null>(null);
+    const navigate = useNavigate();
     return (
         <>
             <Navbar />
@@ -166,7 +168,7 @@ export default function ProjectPage() {
                         <Typography variant="body2" mb={1}>
                             ปุ่มนี้จะขึ้นก็ต่อเมื่อความก้าวหน้า 100%
                         </Typography>
-                        <Button variant="contained" color="primary">
+                        <Button variant="contained" sx={{ backgroundColor: "#2D2C95" }} onClick={() => navigate('/project-submit')}>
                             ยื่นสอบโครงงาน
                         </Button>
                     </Box>

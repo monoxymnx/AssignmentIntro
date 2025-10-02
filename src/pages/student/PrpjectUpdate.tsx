@@ -147,6 +147,7 @@ function ProjectUpdatePage() {
                   px: 4,
                   borderRadius: "20px",
                 }}
+                onClick={() => { alert("บันทึกความก้าวหน้าเรียบร้อย"); navigate("/project-info"); }}
               >
                 บันทึก
               </Button>
