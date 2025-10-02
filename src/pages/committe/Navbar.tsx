@@ -11,19 +11,15 @@ import { useNavigate, useLocation } from "react-router-dom";
 function Navbar() {
     const navigate = useNavigate();
     const location = useLocation();
-
-    const paths = ["/project-info", "/project-update", "/profile"];
+    const paths = ["/committe-table", "/student-exam",];
     const currentTab = paths.indexOf(location.pathname);
-
     const handleLogout = () => {
         navigate("/");
     };
-
     return (
         <>
             <AppBar position="fixed" sx={{ background: "#2D2C95", width: "100%" }}>
                 <Toolbar>
-                    {/* Tabs ด้านซ้าย */}
                     <Tabs
                         value={currentTab === -1 ? 0 : currentTab}
                         onChange={(_, newValue) => navigate(paths[newValue])}
@@ -31,12 +27,9 @@ function Navbar() {
                         indicatorColor="secondary"
                     >
                         <Tab label="โครงงาน" />
-                        <Tab label="บันทึกความก้าวหน้า" />
-                        <Tab label="Profile" />
+                        <Tab label="ผลการสอบ" />
                     </Tabs>
-
                     <Box sx={{ flexGrow: 1 }} />
-
                     <Button
                         color="inherit"
                         onClick={handleLogout}
@@ -49,7 +42,6 @@ function Navbar() {
                     </Button>
                 </Toolbar>
             </AppBar>
-
             <Toolbar />
         </>
     );

@@ -41,10 +41,10 @@ function LoginPage() {
                         navigate("/student");
                         break;
                     case "committee":
-                        navigate("/committe");
+                        navigate("/committe-table");
                         break;
                     case "professor":
-                        navigate("/professor");
+                        navigate("/professor-table");
                         break;
                     case "courseInstructor":
                         navigate("/instructor");

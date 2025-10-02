@@ -12,6 +12,7 @@ import {
     Button,
     Container,
     Collapse,
+    TextField,
 } from "@mui/material";
 import Navbar from "./Navbar";
 import { useState } from "react";
@@ -26,11 +27,6 @@ const progressData = [
         detail: "อัปเดตการโปรย",
         file: "fon.pdf",
         status: "ผ่าน",
-        comments: [
-            { teacher: "อาจารย์ 1", text: "กลับไปแก้ส่วนนี้มาใหม่" },
-            { teacher: "อาจารย์ 2", text: "สู้ๆ นศ" },
-            { teacher: "อาจารย์ 3", text: "สู้ๆ นศ" },
-        ],
     },
     {
         week: 2,
@@ -39,15 +35,10 @@ const progressData = [
         detail: "สัปดาห์ที่สอง",
         file: "fonweek2.pdf",
         status: "ผ่าน",
-        comments: [
-            { teacher: "อาจารย์ 1", text: "กลับไปแก้ส่วนนี้มาใหม่" },
-            { teacher: "อาจารย์ 2", text: "สู้ๆ นศ" },
-            { teacher: "อาจารย์ 3", text: "สู้ๆ นศ" },
-        ],
     },
 ];
 
-export default function ProjectPage() {
+export default function ProjectInfoForProfessor() {
     const [openRow, setOpenRow] = useState<number | null>(null);
     const navigate = useNavigate();
     return (
@@ -55,7 +46,7 @@ export default function ProjectPage() {
             <Navbar />
 
             <Container maxWidth={false} disableGutters>
-                <Box p={4}>
+                <Box p={4} width="100%">
                     <Typography
                         variant="h5"
                         align="center"
@@ -69,13 +60,10 @@ export default function ProjectPage() {
                         <Typography>ชื่อโครงงาน : ฝนกระเทียม</Typography>
                         <Typography>ประเภทโครงงาน : ทดลอง</Typography>
                         <Typography>
-                            ชื่อที่ปรึกษาโครงงาน : รศ.ปุณจันทร์ ประสิทธิยอด
+                            ชื่อที่ปรึกษาโครงงาน : รศ.ปุณจันทร์ ประสิทธิยอด (ยังไม่ยืนยัน)
                         </Typography>
                         <Typography>วันสอบโครงงาน : -</Typography>
-                        <Typography>
-                            สถานะโครงงาน : เกือบผ่าน{" "}
-                            <Chip label="ยังไม่ตรวจสอบ" size="small" color="info" />
-                        </Typography>
+                        <Typography>ชื่อผู้จัดทำ : นายปุลินภัทร ประสิทธิยอด , นางสาวศุกาสิ ประสิทธิยอด</Typography>
                     </Box>
 
                     <Typography
@@ -87,7 +75,7 @@ export default function ProjectPage() {
                         สถานะโครงงานที่ส่งความก้าวหน้า
                     </Typography>
 
-                    <TableContainer component={Paper}>
+                    <TableContainer component={Paper} sx={{ width: '80%', margin: '0 auto' }}>
                         <Table>
                             <TableHead>
                                 <TableRow>
@@ -136,22 +124,9 @@ export default function ProjectPage() {
                                                     <Box sx={{ backgroundColor: "#f5f5f5", p: 2 }}>
                                                         <Table size="small">
                                                             <TableHead>
-                                                                <TableRow>
-                                                                    {row.comments.map((c, i) => (
-                                                                        <TableCell key={i} align="center">
-                                                                            {c.teacher}
-                                                                        </TableCell>
-                                                                    ))}
-                                                                </TableRow>
                                                             </TableHead>
                                                             <TableBody>
-                                                                <TableRow>
-                                                                    {row.comments.map((c, i) => (
-                                                                        <TableCell key={i} align="center">
-                                                                            <Typography variant="body2">{c.text}</Typography>
-                                                                        </TableCell>
-                                                                    ))}
-                                                                </TableRow>
+
                                                             </TableBody>
                                                         </Table>
                                                     </Box>
@@ -163,13 +138,36 @@ export default function ProjectPage() {
                             </TableBody>
                         </Table>
                     </TableContainer>
+                    <Box sx={{ display: "flex", justifyContent: "center", mt: 3,  width: '40%', margin: '0 auto' }}>
+                        <TextField
+                            label="คอมเม้นต์"
+                            fullWidth
+                            margin="normal"
+                            multiline
+                            rows={4}
+                            sx={{
+                                "& .MuiOutlinedInput-root": {
+                                    borderRadius: "15px",
+                                },
+                            }}
+                        />
+                    </Box>
 
-                    <Box textAlign="center" mt={4}>
-                        <Typography variant="body2" mb={1}>
-                            ปุ่มนี้จะขึ้นก็ต่อเมื่อความก้าวหน้า 100%
-                        </Typography>
-                        <Button variant="contained" sx={{ backgroundColor: "#2D2C95" }} onClick={() => navigate('/project-submit')}>
-                            ยื่นสอบโครงงาน
+                    <Box sx={{ display: "flex", justifyContent: "center", mt: 3 }}>
+                        <Button
+                            variant="outlined"
+                            color="inherit"
+                            sx={{ mr: 2, borderRadius: "20px", width: "10%" }}
+                            onClick={() => { navigate("/professor-table"); }}
+                        >
+                            ไม่ผ่าน
+                        </Button>
+                        <Button
+                            variant="contained"
+                            sx={{ borderRadius: "20px", backgroundColor: "#2D2C95", width: "10%" }}
+                            onClick={() => { navigate("/professor-table"); }}
+                        >
+                            ผ่าน
                         </Button>
                     </Box>
                 </Box>

@@ -11,7 +11,7 @@ import {
   Paper,
 } from "@mui/material";
 import { useNavigate } from "react-router-dom";
-import Navbar from "../../components/Navbar";
+import Navbar from "./Navbar";
 
 function ProjectUpdatePage() {
   const navigate = useNavigate();
@@ -25,7 +25,6 @@ function ProjectUpdatePage() {
       setFileName(event.target.files[0].name);
     }
   };
-
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     console.log({

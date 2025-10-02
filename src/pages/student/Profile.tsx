@@ -7,7 +7,7 @@ import {
   IconButton,
 } from "@mui/material";
 import EditIcon from "@mui/icons-material/Edit";
-import Navbar from "../../components/Navbar";
+import Navbar from "./Navbar";
 
 interface Student {
   id: number;
