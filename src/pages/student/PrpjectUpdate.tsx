@@ -15,7 +15,7 @@ import Navbar from "../../components/Navbar";
 
 function ProjectUpdatePage() {
   const navigate = useNavigate();
-  const [file, setFile] = useState<File | null>(null);
+  const [file,] = useState<File | null>(null);
   const [note, setNote] = useState("");
   const [date, setDate] = useState("");
   const [week, setWeek] = useState(1);
@@ -28,14 +28,13 @@ function ProjectUpdatePage() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // mock save logic
     console.log({
       file,
       note,
       date,
       week,
     });
-    navigate("/project-info"); // กลับไปหน้า project-info
+    navigate("/project-info");
   };
 
   return (
@@ -63,7 +62,6 @@ function ProjectUpdatePage() {
           </Typography>
 
           <form onSubmit={handleSubmit}>
-            {/* Upload */}
             <Typography sx={{ mb: 1 }}>อัพโหลดไฟล์งาน</Typography>
             <Box
               sx={{
@@ -81,7 +79,6 @@ function ProjectUpdatePage() {
                 PDF DOCX TXT &nbsp; ≤10 MB
               </Typography>
 
-              {/* ปุ่มเลือกไฟล์ */}
               <Button
                 variant="contained"
                 component="label"
@@ -96,7 +93,6 @@ function ProjectUpdatePage() {
                 />
               </Button>
 
-              {/* แสดงชื่อไฟล์ */}
               {fileName && (
                 <Typography variant="body2" sx={{ mt: 2, color: "black" }}>
                   📄 {fileName}
@@ -104,7 +100,7 @@ function ProjectUpdatePage() {
               )}
             </Box>
 
-            {/* Note */}
+
             <Typography sx={{ mb: 1 }}>บันทึกความก้าวหน้า</Typography>
             <TextField
               fullWidth
@@ -116,7 +112,6 @@ function ProjectUpdatePage() {
               sx={{ mb: 3 }}
             />
 
-            {/* Date & Week */}
             <Box sx={{ display: "flex", gap: 2, mb: 3 }}>
               <TextField
                 label="วันที่ส่งความก้าวหน้า"
@@ -143,7 +138,6 @@ function ProjectUpdatePage() {
               </FormControl>
             </Box>
 
-            {/* Submit Button */}
             <Box sx={{ textAlign: "right" }}>
               <Button
                 type="submit"
@@ -163,7 +157,6 @@ function ProjectUpdatePage() {
     </>
   );
 }
-
 
 export default ProjectUpdatePage;
 

@@ -11,8 +11,6 @@ import {
     TableContainer,
     Button,
     Container,
-    Menu,
-    MenuItem,
     Collapse,
 } from "@mui/material";
 import Navbar from "../../components/Navbar";
@@ -52,10 +50,8 @@ export default function ProjectPage() {
     const [openRow, setOpenRow] = useState<number | null>(null);
     return (
         <>
-            {/* Navbar แยกออกมาไม่อยู่ใน Container */}
             <Navbar />
 
-            {/* เนื้อหาเต็มจอ */}
             <Container maxWidth={false} disableGutters>
                 <Box p={4}>
                     <Typography
@@ -80,7 +76,6 @@ export default function ProjectPage() {
                         </Typography>
                     </Box>
 
-                    {/* ส่วนหัวตาราง */}
                     <Typography
                         variant="h5"
                         align="center"
@@ -90,7 +85,6 @@ export default function ProjectPage() {
                         สถานะโครงงานที่ส่งความก้าวหน้า
                     </Typography>
 
-                    {/* ตาราง */}
                     <TableContainer component={Paper}>
                         <Table>
                             <TableHead>
@@ -107,7 +101,6 @@ export default function ProjectPage() {
                             <TableBody>
                                 {progressData.map((row, index) => (
                                     <React.Fragment key={index}>
-                                        {/* แถวหลัก */}
                                         <TableRow
                                             sx={{ backgroundColor: "#e3f2fd" }}
                                         >
@@ -135,7 +128,6 @@ export default function ProjectPage() {
                                             </TableCell>
                                         </TableRow>
 
-                                        {/* แถวคอมเม้นต์ (ซ่อน/โชว์) */}
                                         <TableRow>
                                             <TableCell colSpan={7} sx={{ p: 0 }}>
                                                 <Collapse in={openRow === index} timeout="auto" unmountOnExit>
@@ -170,7 +162,6 @@ export default function ProjectPage() {
                         </Table>
                     </TableContainer>
 
-                    {/* ปุ่ม
                     <Box textAlign="center" mt={4}>
                         <Typography variant="body2" mb={1}>
                             ปุ่มนี้จะขึ้นก็ต่อเมื่อความก้าวหน้า 100%
@@ -178,7 +169,7 @@ export default function ProjectPage() {
                         <Button variant="contained" color="primary">
                             ยื่นสอบโครงงาน
                         </Button>
-                    </Box> */}
+                    </Box>
                 </Box>
             </Container>
         </>

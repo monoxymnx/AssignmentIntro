@@ -49,7 +49,6 @@ const ProjectFormPage: React.FC = () => {
                     แบบฟอร์มการนำเสนอโครงงาน
                 </Typography>
 
-                {/* เลือกประเภทโครงงาน */}
                 <FormControl
                     fullWidth
                     margin="normal"
@@ -77,8 +76,6 @@ const ProjectFormPage: React.FC = () => {
                         ))}
                     </Select>
                 </FormControl>
-
-                {/* ชื่อโครงงาน */}
                 <TextField
                     label="ชื่อโครงงาน"
                     fullWidth
@@ -86,7 +83,6 @@ const ProjectFormPage: React.FC = () => {
                     sx={{ "& .MuiOutlinedInput-root": { borderRadius: "15px" } }}
                 />
 
-                {/* ขอบเขตโครงงาน */}
                 <TextField
                     label="ขอบเขตโครงงาน"
                     fullWidth
@@ -96,7 +92,6 @@ const ProjectFormPage: React.FC = () => {
                     sx={{ "& .MuiOutlinedInput-root": { borderRadius: "15px" } }}
                 />
 
-                {/* ชื่อนักศึกษา */}
                 <TextField
                     label="ชื่อที่ปรึกษาโครงงาน 1"
                     fullWidth
@@ -116,7 +111,6 @@ const ProjectFormPage: React.FC = () => {
                     sx={{ "& .MuiOutlinedInput-root": { borderRadius: "15px" } }}
                 />
 
-                {/* วันที่ยื่นโครงงาน */}
                 <LocalizationProvider dateAdapter={AdapterDateFns}>
                     <DatePicker
                         label="วันที่ยื่นโครงงาน"
@@ -136,7 +130,6 @@ const ProjectFormPage: React.FC = () => {
                     />
                 </LocalizationProvider>
 
-                {/* Upload File */}
                 <Box
                     sx={{
                         border: "2px dashed #ccc",
@@ -153,7 +146,6 @@ const ProjectFormPage: React.FC = () => {
                         PDF DOCX TXT &nbsp; ≤10 MB
                     </Typography>
 
-                    {/* ปุ่มเลือกไฟล์ */}
                     <Button
                         variant="contained"
                         component="label"
@@ -168,7 +160,6 @@ const ProjectFormPage: React.FC = () => {
                         />
                     </Button>
 
-                    {/* แสดงชื่อไฟล์ */}
                     {fileName && (
                         <Typography variant="body2" sx={{ mt: 2, color: "black" }}>
                             📄 {fileName}
@@ -176,7 +167,6 @@ const ProjectFormPage: React.FC = () => {
                     )}
                 </Box>
 
-                {/* Buttons */}
                 <Box sx={{ display: "flex", justifyContent: "center", mt: 3 }}>
                     <Button
                         variant="outlined"

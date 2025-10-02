@@ -16,7 +16,7 @@ interface Student {
   major: string;
   project: string;
   projectType: string;
-  role: string; // เจ้าของโครงงาน / ผู้ร่วมโครงงาน
+  role: string;
   image?: string;
 }
 
@@ -50,7 +50,6 @@ const ProfilePage: React.FC = () => {
     if (e.target.files && e.target.files[0]) {
       const file = e.target.files[0];
       const newImage = URL.createObjectURL(file);
-
       setStudents((prev) =>
         prev.map((student) =>
           student.id === id ? { ...student, image: newImage } : student
@@ -66,7 +65,6 @@ const ProfilePage: React.FC = () => {
         <Typography variant="h5" fontWeight="bold" gutterBottom>
           Profile
         </Typography>
-
         {students.map((student) => (
           <Paper
             key={student.id}

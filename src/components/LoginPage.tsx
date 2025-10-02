@@ -8,7 +8,7 @@ import {
     Alert,
 } from "@mui/material";
 import { useState } from "react";
-import { BrowserRouter as Router, Routes, Route, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const mockUsers = [
     { username: "student1", password: "123456", role: "student" },

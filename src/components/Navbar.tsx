@@ -1,4 +1,3 @@
-import React from "react";
 import {
     AppBar,
     Toolbar,
@@ -36,10 +35,8 @@ function Navbar() {
                         <Tab label="Profile" />
                     </Tabs>
 
-                    {/* ดันปุ่มไปขวาสุด */}
                     <Box sx={{ flexGrow: 1 }} />
 
-                    {/* ปุ่ม Logout */}
                     <Button
                         color="inherit"
                         onClick={handleLogout}
@@ -53,7 +50,6 @@ function Navbar() {
                 </Toolbar>
             </AppBar>
 
-            {/* Spacer กันทับเนื้อหา */}
             <Toolbar />
         </>
     );

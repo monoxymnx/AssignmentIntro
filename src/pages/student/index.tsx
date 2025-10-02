@@ -36,7 +36,6 @@ const StudentPage: React.FC = () => {
           ลงทะเบียนข้อมูลผู้จัดทำ
         </Typography>
 
-        {/* Group Name */}
         <TextField
           label="ชื่อกลุ่ม"
           fullWidth
@@ -44,7 +43,7 @@ const StudentPage: React.FC = () => {
           sx={{ "& .MuiOutlinedInput-root": { borderRadius: "15px" } }}
         />
 
-        {/* Student 1 */}
+
         <TextField
           label="ชื่อนักศึกษาคนที่ 1"
           fullWidth
@@ -92,7 +91,6 @@ const StudentPage: React.FC = () => {
           </Select>
         </FormControl>
 
-        {/* Student 2 */}
         <TextField
           label="ชื่อนักศึกษาคนที่ 2"
           fullWidth
@@ -140,8 +138,6 @@ const StudentPage: React.FC = () => {
           </Select>
         </FormControl>
 
-
-        {/* Buttons */}
         <Box sx={{ display: "flex", justifyContent: "center", mt: 3 }}>
           <Button variant="contained" color="primary" sx={{ borderRadius: "20px", width: "35%" ,backgroundColor:"#2D2C95"}} onClick={handleNext}>
             ถัดไป
