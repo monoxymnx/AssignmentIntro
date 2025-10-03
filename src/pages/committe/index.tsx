@@ -35,7 +35,7 @@ const mockData: Project[] = [
     name: "ระบบรักษาความปลอดภัย",
     owner: "ปุลินภัทร",
     date: "2/4/68",
-    progress: "20%",
+    progress: "100%",
     status: "ยังไม่ยื่นสอบ",
   },
   {
@@ -47,33 +47,7 @@ const mockData: Project[] = [
     progress: "100%",
     status: "รอลงนาม",
   },
-  {
-    id: 3,
-    type: "",
-    name: "ระบบรักษาความสุข",
-    owner: "วัจน์กร",
-    date: "25/7/68",
-    progress: "100%",
-    status: "รอสอบ",
-  },
-  {
-    id: 4,
-    type: "",
-    name: "ซุปเปอร์ถังขยะ",
-    owner: "วีรชัยะ",
-    date: "21/6/68",
-    progress: "50%",
-    status: "ยังไม่ยื่นสอบ",
-  },
-  {
-    id: 5,
-    type: "",
-    name: "เครื่องตรวจจับคนเข้าออก",
-    owner: "ศุภกิติ",
-    date: "25/7/68",
-    progress: "79%",
-    status: "ยังไม่ยื่นสอบ",
-  },
+
 ];
 
 export default function TableForCommitte() {

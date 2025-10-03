@@ -93,19 +93,13 @@ const ProjectFormPage: React.FC = () => {
                 />
 
                 <TextField
-                    label="ชื่อที่ปรึกษาโครงงาน 1"
+                    label="ชื่อที่ปรึกษาโครงงาน"
                     fullWidth
                     margin="normal"
                     sx={{ "& .MuiOutlinedInput-root": { borderRadius: "15px" } }}
                 />
                 <TextField
-                    label="ชื่อที่ปรึกษาโครงงาน 2"
-                    fullWidth
-                    margin="normal"
-                    sx={{ "& .MuiOutlinedInput-root": { borderRadius: "15px" } }}
-                />
-                <TextField
-                    label="ชื่อที่ปรึกษาโครงงาน 3"
+                    label="ชื่อที่ปรึกษาร่วม"
                     fullWidth
                     margin="normal"
                     sx={{ "& .MuiOutlinedInput-root": { borderRadius: "15px" } }}

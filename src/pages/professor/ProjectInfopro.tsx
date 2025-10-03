@@ -27,6 +27,10 @@ const progressData = [
         detail: "อัปเดตการโปรย",
         file: "fon.pdf",
         status: "ผ่าน",
+        comments: [
+            { teacher: "อาจารย์ที่ปรึกษาโครงงาน", text: "กลับไปแก้ส่วนนี้มาใหม่" },
+            { teacher: "อาจารย์ที่ปรึกษาร่วม", text: "สู้ๆ นศ" },
+        ],
     },
     {
         week: 2,
@@ -35,7 +39,12 @@ const progressData = [
         detail: "สัปดาห์ที่สอง",
         file: "fonweek2.pdf",
         status: "ผ่าน",
+        comments: [
+            { teacher: "อาจารย์ที่ปรึกษาโครงงาน", text: "กลับไปแก้ส่วนนี้มาใหม่" },
+            { teacher: "อาจารย์ที่ปรึกษาร่วม", text: "สู้ๆ นศ" },
+        ],
     },
+
 ];
 
 export default function ProjectInfoForProfessor() {
@@ -60,12 +69,14 @@ export default function ProjectInfoForProfessor() {
                         <Typography>ชื่อโครงงาน : ฝนกระเทียม</Typography>
                         <Typography>ประเภทโครงงาน : ทดลอง</Typography>
                         <Typography>
-                            ชื่อที่ปรึกษาโครงงาน : รศ.ปุณจันทร์ ประสิทธิยอด (ยังไม่ยืนยัน)
+                            ชื่อที่ปรึกษาโครงงาน : รศ.ปุณจันทร์ ประสิทธิยอด
+                        </Typography>
+                        <Typography>
+                            ชื่อที่ปรึกษาร่วม : ผศ.ปุลินภัทร์ ประสิทธินอก
                         </Typography>
                         <Typography>วันสอบโครงงาน : -</Typography>
-                        <Typography>ชื่อผู้จัดทำ : นายปุลินภัทร ประสิทธิยอด , นางสาวศุกาสิ ประสิทธิยอด</Typography>
+                        <Typography>ชื่อผู้จัดทำ : นายปุลินภัทร ประสิทธินอก , นางสาวศุกาสิ ประสิทธิยอด</Typography>
                     </Box>
-
                     <Typography
                         variant="h5"
                         align="center"
@@ -74,7 +85,6 @@ export default function ProjectInfoForProfessor() {
                     >
                         สถานะโครงงานที่ส่งความก้าวหน้า
                     </Typography>
-
                     <TableContainer component={Paper} sx={{ width: '80%', margin: '0 auto' }}>
                         <Table>
                             <TableHead>
@@ -117,16 +127,28 @@ export default function ProjectInfoForProfessor() {
                                                 </Button>
                                             </TableCell>
                                         </TableRow>
-
                                         <TableRow>
                                             <TableCell colSpan={7} sx={{ p: 0 }}>
                                                 <Collapse in={openRow === index} timeout="auto" unmountOnExit>
                                                     <Box sx={{ backgroundColor: "#f5f5f5", p: 2 }}>
                                                         <Table size="small">
                                                             <TableHead>
+                                                                <TableRow>
+                                                                    {row.comments.map((c, i) => (
+                                                                        <TableCell key={i} align="center">
+                                                                            {c.teacher}
+                                                                        </TableCell>
+                                                                    ))}
+                                                                </TableRow>
                                                             </TableHead>
                                                             <TableBody>
-
+                                                                <TableRow>
+                                                                    {row.comments.map((c, i) => (
+                                                                        <TableCell key={i} align="center">
+                                                                            <Typography variant="body2">{c.text}</Typography>
+                                                                        </TableCell>
+                                                                    ))}
+                                                                </TableRow>
                                                             </TableBody>
                                                         </Table>
                                                     </Box>
@@ -138,13 +160,25 @@ export default function ProjectInfoForProfessor() {
                             </TableBody>
                         </Table>
                     </TableContainer>
-                    <Box sx={{ display: "flex", justifyContent: "center", mt: 3,  width: '40%', margin: '0 auto' }}>
+                    <Box sx={{ display: "flex", justifyContent: "center", mt: 3, width: '40%', margin: '0 auto' }}>
                         <TextField
                             label="คอมเม้นต์"
                             fullWidth
                             margin="normal"
                             multiline
                             rows={4}
+                            sx={{
+                                "& .MuiOutlinedInput-root": {
+                                    borderRadius: "15px",
+                                },
+                            }}
+                        />
+                    </Box>
+                    <Box sx={{ display: "flex", justifyContent: "center", mt: 2, width: '40%', margin: '0 auto' }}>
+                        <TextField
+                            label="% ความคืบหน้า"
+                            fullWidth
+                            margin="normal"
                             sx={{
                                 "& .MuiOutlinedInput-root": {
                                     borderRadius: "15px",
@@ -171,7 +205,7 @@ export default function ProjectInfoForProfessor() {
                         </Button>
                     </Box>
                 </Box>
-            </Container>
+            </Container >
         </>
     );
 }

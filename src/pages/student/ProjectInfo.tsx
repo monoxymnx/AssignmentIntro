@@ -27,9 +27,8 @@ const progressData = [
         file: "fon.pdf",
         status: "ผ่าน",
         comments: [
-            { teacher: "อาจารย์ 1", text: "กลับไปแก้ส่วนนี้มาใหม่" },
-            { teacher: "อาจารย์ 2", text: "สู้ๆ นศ" },
-            { teacher: "อาจารย์ 3", text: "สู้ๆ นศ" },
+            { teacher: "อาจารย์ที่ปรึกษาโครงงาน", text: "กลับไปแก้ส่วนนี้มาใหม่" },
+            { teacher: "อาจารย์ที่ปรึกษาร่วม", text: "สู้ๆ นศ" },
         ],
     },
     {
@@ -40,9 +39,8 @@ const progressData = [
         file: "fonweek2.pdf",
         status: "ผ่าน",
         comments: [
-            { teacher: "อาจารย์ 1", text: "กลับไปแก้ส่วนนี้มาใหม่" },
-            { teacher: "อาจารย์ 2", text: "สู้ๆ นศ" },
-            { teacher: "อาจารย์ 3", text: "สู้ๆ นศ" },
+            { teacher: "อาจารย์ที่ปรึกษาโครงงาน", text: "กลับไปแก้ส่วนนี้มาใหม่" },
+            { teacher: "อาจารย์ที่ปรึกษาร่วม", text: "สู้ๆ นศ" },
         ],
     },
 ];
@@ -71,6 +69,10 @@ export default function ProjectPage() {
                         <Typography>
                             ชื่อที่ปรึกษาโครงงาน : รศ.ปุณจันทร์ ประสิทธิยอด
                         </Typography>
+                        <Typography>
+                            ชื่อที่ปรึกษาร่วม : ผศ.ปุลินภัทร์ ประสิทธินอก
+                        </Typography>
+                        
                         <Typography>วันสอบโครงงาน : -</Typography>
                         <Typography>
                             สถานะโครงงาน : เกือบผ่าน{" "}

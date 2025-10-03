@@ -13,6 +13,7 @@ import StudentProfilePage from "./pages/committe/StudentProfile";
 import ProjectExamTable from "./pages/committe/ProjectExamTable";
 import TableForProfessor from "./pages/professor";
 import ProjectInfoForProfessor from "./pages/professor/ProjectInfopro";
+import ProjectExamTableForProfessor from "./pages/professor/examProfes";
 
 function App() {
   return (
@@ -29,6 +30,7 @@ function App() {
 
         <Route path="/professor-table" element={<TableForProfessor />} />
         <Route path="/professor-projectinfo" element={<ProjectInfoForProfessor />} />
+        <Route path="/professor-exam" element={<ProjectExamTableForProfessor />} />
 
         <Route path="/instructor" element={<InstructorPage />} />
 

@@ -26,14 +26,22 @@ const progressData = [
         detail: "อัปเดตการโปรย",
         file: "fon.pdf",
         status: "ผ่าน",
+        comments: [
+            { teacher: "อาจารย์ที่ปรึกษาโครงงาน", text: "กลับไปแก้ส่วนนี้มาใหม่" },
+            { teacher: "อาจารย์ที่ปรึกษาร่วม", text: "สู้ๆ นศ" },
+        ],
     },
     {
         week: 2,
         date: "17/2/69",
-        progress: "20%",
+        progress: "100%",
         detail: "สัปดาห์ที่สอง",
         file: "fonweek2.pdf",
         status: "ผ่าน",
+        comments: [
+            { teacher: "อาจารย์ที่ปรึกษาโครงงาน", text: "กลับไปแก้ส่วนนี้มาใหม่" },
+            { teacher: "อาจารย์ที่ปรึกษาร่วม", text: "สู้ๆ นศ" },
+        ],
     },
 ];
 
@@ -59,10 +67,13 @@ export default function ProjectInfoForCommit() {
                         <Typography>ชื่อโครงงาน : ฝนกระเทียม</Typography>
                         <Typography>ประเภทโครงงาน : ทดลอง</Typography>
                         <Typography>
-                            ชื่อที่ปรึกษาโครงงาน : รศ.ปุณจันทร์ ประสิทธิยอด (ยังไม่ยืนยัน)
+                            ชื่อที่ปรึกษาโครงงาน : รศ.ปุณจันทร์ ประสิทธิยอด
                         </Typography>
-                        <Typography>วันสอบโครงงาน : -</Typography>
-                        <Typography>ชื่อผู้จัดทำ : นายปุลินภัทร ประสิทธิยอด , นางสาวศุกาสิ ประสิทธิยอด</Typography>
+                        <Typography>
+                            ชื่อที่ปรึกษาร่วม : ผศ.ปุลินภัทร์ ประสิทธินอก
+                        </Typography>
+                        <Typography>วันสอบโครงงาน : 27/2/69</Typography>
+                        <Typography>ชื่อผู้จัดทำ : นายวินัทร์ วนดี , นางสาวกฤติตา แซ่ฟ่ง</Typography>
                         <Button variant="outlined" sx={{ mt: 1 }} onClick={() => { navigate("/student-profile"); }}>
                             ดูโปรไฟล์นักศึกษา
                         </Button>
@@ -74,7 +85,7 @@ export default function ProjectInfoForCommit() {
                         gutterBottom
                         fontWeight="bold"
                     >
-                        สถานะโครงงานที่ส่งความก้าวหน้า
+                        ประวัติความก้าวหน้า
                     </Typography>
 
                     <TableContainer component={Paper}>
@@ -126,9 +137,22 @@ export default function ProjectInfoForCommit() {
                                                     <Box sx={{ backgroundColor: "#f5f5f5", p: 2 }}>
                                                         <Table size="small">
                                                             <TableHead>
+                                                                <TableRow>
+                                                                    {row.comments.map((c, i) => (
+                                                                        <TableCell key={i} align="center">
+                                                                            {c.teacher}
+                                                                        </TableCell>
+                                                                    ))}
+                                                                </TableRow>
                                                             </TableHead>
                                                             <TableBody>
-
+                                                                <TableRow>
+                                                                    {row.comments.map((c, i) => (
+                                                                        <TableCell key={i} align="center">
+                                                                            <Typography variant="body2">{c.text}</Typography>
+                                                                        </TableCell>
+                                                                    ))}
+                                                                </TableRow>
                                                             </TableBody>
                                                         </Table>
                                                     </Box>

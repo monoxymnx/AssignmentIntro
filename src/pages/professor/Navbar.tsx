@@ -11,7 +11,7 @@ import { useNavigate, useLocation } from "react-router-dom";
 function Navbar() {
     const navigate = useNavigate();
     const location = useLocation();
-    const paths = ["/professor-table", "/student-exam-professor"];
+    const paths = ["/professor-table", "/professor-exam"];
     const currentTab = paths.indexOf(location.pathname);
     const handleLogout = () => {
         navigate("/");
