@@ -1,7 +1,6 @@
 import { BrowserRouter as Router, Routes, Route,} from "react-router-dom";
 import LoginPage from "./components/LoginPage";
 import StudentPage from "./pages/student";
-import InstructorPage from "./pages/instructor";
 import ProjectFormPage from "./pages/student/ProjectForm";
 import ProjectInfo from "./pages/student/ProjectInfo";
 import ProjectUpdatePage from "./pages/student/PrpjectUpdate";
@@ -14,6 +13,9 @@ import ProjectExamTable from "./pages/committe/ProjectExamTable";
 import TableForProfessor from "./pages/professor";
 import ProjectInfoForProfessor from "./pages/professor/ProjectInfopro";
 import ProjectExamTableForProfessor from "./pages/professor/examProfes";
+import TableForInstructor from "./pages/instructor";
+import ProjectInfoForInstructor from "./pages/instructor/ProjectInfoIns";
+import ProjectExamTableForInstructor from "./pages/instructor/examIns";
 
 function App() {
   return (
@@ -32,7 +34,10 @@ function App() {
         <Route path="/professor-projectinfo" element={<ProjectInfoForProfessor />} />
         <Route path="/professor-exam" element={<ProjectExamTableForProfessor />} />
 
-        <Route path="/instructor" element={<InstructorPage />} />
+
+        <Route path="/instructor-table" element={<TableForInstructor />} />
+        <Route path="/instructor-projectinfo" element={<ProjectInfoForInstructor />} />
+        <Route path="/instructor-exam" element={<ProjectExamTableForInstructor />} />
 
         {/* student routes */}
         <Route path="/student" element={<StudentPage />} />

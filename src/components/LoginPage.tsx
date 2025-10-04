@@ -47,7 +47,7 @@ function LoginPage() {
                         navigate("/professor-table");
                         break;
                     case "courseInstructor":
-                        navigate("/instructor");
+                        navigate("/instructor-table");
                         break;
                     default:
                         navigate("/");
