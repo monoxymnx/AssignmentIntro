@@ -63,6 +63,10 @@ function LoginPage() {
     return (
         <Box
             sx={{
+                position: "fixed",
+                top: 0,
+                left: 0,
+                width: "100vw", 
                 height: "100vh",
                 display: "flex",
                 alignItems: "center",
@@ -70,6 +74,7 @@ function LoginPage() {
                 backgroundImage: `url(${backgroundImage})`,
                 backgroundSize: "cover",
                 backgroundPosition: "center",
+                backgroundRepeat: "no-repeat",
             }}
         >
             <Container maxWidth="sm">
@@ -82,7 +87,7 @@ function LoginPage() {
                         backgroundColor: "rgba(255,255,255,0.9)",
                     }}
                 >
-                    <Box sx={{ mb: 2 }}> 
+                    <Box sx={{ mb: 2 }}>
                         <img src={fitmLogo} alt="FITM Logo" style={{ maxHeight: 80 }} /> </Box>
                     <Typography variant="h6" sx={{ fontWeight: "bold", mb: 1 }}>
                         ระบบการจัดการข้อมูลโครงการงานพิเศษ <br />
@@ -158,11 +163,11 @@ function LoginPage() {
                             </Alert>
                         )}
                     </Box>
-                    <Box sx={{ mt: 3, textAlign: "left", fontSize: 14 }}> 
-                        <Typography variant="subtitle2" sx={{ fontWeight: "bold" }}> การเข้าสู่ระบบ </Typography> 
-                        <Typography>นักศึกษา: รหัสนักศึกษา</Typography> 
-                        <Typography> อาจารย์-กรรมการ: รหัสพนักงาน รหัสบัตร </Typography> 
-                        <Typography>password: รหัสบัตรประชาชน</Typography> 
+                    <Box sx={{ mt: 3, textAlign: "left", fontSize: 14 }}>
+                        <Typography variant="subtitle2" sx={{ fontWeight: "bold" }}> การเข้าสู่ระบบ </Typography>
+                        <Typography>นักศึกษา: รหัสนักศึกษา</Typography>
+                        <Typography> อาจารย์-กรรมการ: รหัสพนักงาน รหัสบัตร </Typography>
+                        <Typography>password: รหัสบัตรประชาชน</Typography>
                     </Box>
                 </Paper>
             </Container>
