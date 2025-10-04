@@ -8,7 +8,7 @@ import {
 } from "@mui/material";
 import Navbar from "./Navbar";
 import { useNavigate } from "react-router-dom";
-
+import humenImage from "../../assets/humen.png";
 interface Student {
     id: number;
     name: string;
@@ -29,7 +29,7 @@ const mockStudents: Student[] = [
         project: "ฝนกระเทียม",
         projectType: "ทดลอง",
         role: "เจ้าของโครงงาน",
-        image: "src/assets/humen.png",
+        image: humenImage,
     },
     {
         id: 2,
@@ -39,7 +39,7 @@ const mockStudents: Student[] = [
         project: "ฝนกระเทียม",
         projectType: "ทดลอง",
         role: "ผู้ร่วมโครงงาน",
-        image: "src/assets/humen.png",
+        image: humenImage,
     },
 ];
 

@@ -8,6 +8,7 @@ import {
 } from "@mui/material";
 import EditIcon from "@mui/icons-material/Edit";
 import Navbar from "./Navbar";
+import humenImage from "../../assets/humen.png";
 
 interface Student {
   id: number;
@@ -29,7 +30,7 @@ const mockStudents: Student[] = [
     project: "ฝนกระเทียม",
     projectType: "ทดลอง",
     role: "เจ้าของโครงงาน",
-    image: "src/assets/humen.png",
+    image: humenImage,
   },
   {
     id: 2,
@@ -39,7 +40,7 @@ const mockStudents: Student[] = [
     project: "ฝนกระเทียม",
     projectType: "ทดลอง",
     role: "ผู้ร่วมโครงงาน",
-    image: "src/assets/humen.png",
+    image: humenImage,
   },
 ];
 

@@ -9,6 +9,8 @@ import {
 } from "@mui/material";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import backgroundImage from "../assets/backgroundLogin.png";
+import fitmLogo from "../assets/fitmLogo.png";
 
 const mockUsers = [
     { username: "student1", password: "123456", role: "student" },
@@ -65,7 +67,7 @@ function LoginPage() {
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
-                backgroundImage: "url('src/assets/backgroundLogin.png')",
+                backgroundImage: `url(${backgroundImage})`,
                 backgroundSize: "cover",
                 backgroundPosition: "center",
             }}
@@ -81,7 +83,7 @@ function LoginPage() {
                     }}
                 >
                     <Box sx={{ mb: 2 }}> 
-                        <img src="src/assets/fitmLogo.png" alt="FITM Logo" style={{ maxHeight: 80 }} /> </Box>
+                        <img src={fitmLogo} alt="FITM Logo" style={{ maxHeight: 80 }} /> </Box>
                     <Typography variant="h6" sx={{ fontWeight: "bold", mb: 1 }}>
                         ระบบการจัดการข้อมูลโครงการงานพิเศษ <br />
                         และโครงการงานสหกิจ
