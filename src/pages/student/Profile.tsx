@@ -5,6 +5,7 @@ import {
   Paper,
   Avatar,
   IconButton,
+  Container,
 } from "@mui/material";
 import EditIcon from "@mui/icons-material/Edit";
 import Navbar from "./Navbar";
@@ -62,55 +63,111 @@ const ProfilePage: React.FC = () => {
   return (
     <>
       <Navbar />
-      <Box display="flex" flexDirection="column" alignItems="center" mt={5}>
-        <Typography variant="h5" fontWeight="bold" gutterBottom>
-          Profile
-        </Typography>
-        {students.map((student) => (
-          <Paper
-            key={student.id}
-            sx={{ p: 3, mb: 4, display: "flex", alignItems: "center", width: 600 }}
+      <Box
+        sx={{
+          backgroundColor: "#f5f7ff",
+          minHeight: "100vh",
+          py: 5,
+        }}
+      >
+        <Container maxWidth="md">
+          <Typography
+            variant="h5"
+            fontWeight="bold"
+            color="#2D2C95"
+            textAlign="center"
+            gutterBottom
           >
-            <Box position="relative" mr={3}>
-              <Avatar
-                src={student.image || ""}
-                sx={{ width: 100, height: 120, borderRadius: 2 }}
-                variant="rounded"
-              >
-                รูปนักศึกษา
-              </Avatar>
-              <input
-                type="file"
-                accept="image/*"
-                style={{ display: "none" }}
-                id={`upload-${student.id}`}
-                onChange={(e) => handleImageChange(e, student.id)}
-              />
-              <label htmlFor={`upload-${student.id}`}>
-                <IconButton
-                  component="span"
+            ข้อมูลโปรไฟล์นักศึกษา
+          </Typography>
+
+          {students.map((student) => (
+            <Paper
+              key={student.id}
+              sx={{
+                p: 3,
+                mb: 4,
+                display: "flex",
+                alignItems: "center",
+                borderRadius: 4,
+                boxShadow: 3,
+                backgroundColor: "white",
+                "&:hover": {
+                  boxShadow: 5,
+                },
+              }}
+            >
+              <Box position="relative" mr={3}>
+                <Avatar
+                  src={student.image || ""}
                   sx={{
-                    position: "absolute",
-                    bottom: 0,
-                    right: 0,
-                    backgroundColor: "white",
-                    boxShadow: 1,
+                    width: 100,
+                    height: 120,
+                    borderRadius: 3,
+                    border: "3px solid #2D2C95",
+                  }}
+                  variant="rounded"
+                >
+                  รูปนักศึกษา
+                </Avatar>
+
+                {/* ปุ่มแก้ไขรูป */}
+                <input
+                  type="file"
+                  accept="image/*"
+                  style={{ display: "none" }}
+                  id={`upload-${student.id}`}
+                  onChange={(e) => handleImageChange(e, student.id)}
+                />
+                <label htmlFor={`upload-${student.id}`}>
+                  <IconButton
+                    component="span"
+                    sx={{
+                      position: "absolute",
+                      bottom: 0,
+                      right: 0,
+                      backgroundColor: "#2D2C95",
+                      color: "white",
+                      boxShadow: 2,
+                      "&:hover": { backgroundColor: "#1d1c75" },
+                    }}
+                  >
+                    <EditIcon fontSize="small" />
+                  </IconButton>
+                </label>
+              </Box>
+
+              {/* ข้อมูลนักศึกษา */}
+              <Box>
+                <Typography
+                  variant="subtitle2"
+                  sx={{
+                    fontWeight: "bold",
+                    color: "#2D2C95",
+                    mb: 1,
                   }}
                 >
-                  <EditIcon fontSize="small" />
-                </IconButton>
-              </label>
-            </Box>
-            <Box>
-              <Typography>{student.role}</Typography>
-              <Typography>ชื่อ-สกุล : {student.name}</Typography>
-              <Typography>รหัสนักศึกษา : {student.studentId}</Typography>
-              <Typography>สาขา : {student.major}</Typography>
-              <Typography>ชื่อโครงงาน : {student.project}</Typography>
-              <Typography>เลือกประเภทโครงงาน : {student.projectType}</Typography>
-            </Box>
-          </Paper>
-        ))}
+                  {student.role}
+                </Typography>
+                <Typography sx={{ mb: 0.5 }}>
+                  <strong>ชื่อ-สกุล:</strong> {student.name}
+                </Typography>
+                <Typography sx={{ mb: 0.5 }}>
+                  <strong>รหัสนักศึกษา:</strong> {student.studentId}
+                </Typography>
+                <Typography sx={{ mb: 0.5 }}>
+                  <strong>สาขา:</strong> {student.major}
+                </Typography>
+                <Typography sx={{ mb: 0.5 }}>
+                  <strong>ชื่อโครงงาน:</strong> {student.project}
+                </Typography>
+                <Typography>
+                  <strong>ประเภทโครงงาน:</strong> {student.projectType}
+                </Typography>
+              </Box>
+            </Paper>
+          ))}
+        </Container>
       </Box>
     </>
   );

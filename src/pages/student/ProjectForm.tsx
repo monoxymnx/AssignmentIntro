@@ -16,6 +16,7 @@ import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import { useNavigate } from "react-router-dom";
+import Navbarsec from "./Navbarsec";
 
 const projectTypes = ["โครงงาน สหกิจ", "โครงงาน พิเศษ"];
 
@@ -83,204 +84,207 @@ const ProjectFormPage: React.FC = () => {
     };
 
     return (
-        <Container maxWidth="sm">
-            <Box
-                sx={{
-                    mt: 5,
-                    p: 3,
-                    borderRadius: 2,
-                    boxShadow: 3,
-                    backgroundColor: "#fff",
-                }}
-            >
-                <Typography
-                    variant="h5"
-                    align="center"
-                    gutterBottom
-                    fontWeight="bold"
-                >
-                    แบบฟอร์มการนำเสนอโครงงาน
-                </Typography>
-
-
-                <FormControl fullWidth margin="normal">
-                    <InputLabel>เลือกประเภทโครงงาน</InputLabel>
-                    <Select defaultValue="">
-                        <MenuItem value="">เลือกประเภท</MenuItem>
-                        {projectTypes.map((type) => (
-                            <MenuItem key={type} value={type}>
-                                {type}
-                            </MenuItem>
-                        ))}
-                    </Select>
-                </FormControl>
-
-                <TextField
-                    label="ชื่อโครงงาน"
-                    fullWidth
-                    margin="normal"
-                    sx={{ "& .MuiOutlinedInput-root": { borderRadius: "15px" } }}
-                />
-
-
-                <TextField
-                    label="ขอบเขตโครงงาน"
-                    fullWidth
-                    margin="normal"
-                    multiline
-                    rows={4}
-                    sx={{ "& .MuiOutlinedInput-root": { borderRadius: "15px" } }}
-                />
-
-
-                <Box sx={{ mt: 2 }}>
-                    <Typography fontWeight="bold" sx={{ mb: 1 }}>
-                        อาจารย์ที่ปรึกษา
-                    </Typography>
-
-                    {advisors.map((advisor, index) => (
-                        <Box
-                            key={index}
-                            sx={{
-                                display: "flex",
-                                alignItems: "center",
-                                gap: 1,
-                                mb: 2,
-                            }}
-                        >
-                            <FormControl fullWidth>
-                                <InputLabel>
-                                    {index === 0
-                                        ? "อาจารย์ที่ปรึกษา"
-                                        : `อาจารย์ที่ปรึกษาร่วม ${index}`}
-                                </InputLabel>
-                                <Select
-                                    value={advisor}
-                                    onChange={handleAdvisorChange(index)}
-                                >
-                                    <MenuItem value="">เลือกอาจารย์</MenuItem>
-                                    {professorList.map((name) => (
-                                        <MenuItem
-                                            key={name}
-                                            value={name}
-                                            disabled={advisors.includes(name)}
-                                        >
-                                            {name}
-                                        </MenuItem>
-                                    ))}
-                                </Select>
-                            </FormControl>
-
-
-                            {index > 0 && (
-                                <Button
-                                    color="error"
-                                    onClick={() => handleRemoveAdvisor(index)}
-                                >
-                                    ลบ
-                                </Button>
-                            )}
-                        </Box>
-                    ))}
-
-
-                    {advisors.length < 3 && (
-                        <Box sx={{ textAlign: "center", mt: 1 }}>
-                            <Button
-                                variant="outlined"
-                                onClick={handleAddAdvisor}
-                                sx={{
-                                    borderRadius: "20px",
-                                    color: "#2D2C95",
-                                    borderColor: "#2D2C95",
-                                }}
-                            >
-                                + เพิ่มอาจารย์ที่ปรึกษาร่วม
-                            </Button>
-                        </Box>
-                    )}
-                </Box>
-
-
-                <LocalizationProvider dateAdapter={AdapterDateFns}>
-                    <DatePicker
-                        label="วันที่ยื่นโครงงาน"
-                        value={date}
-                        onChange={(newValue) => setDate(newValue)}
-                        slotProps={{
-                            textField: {
-                                fullWidth: true,
-                                margin: "normal",
-                                sx: {
-                                    "& .MuiOutlinedInput-root": {
-                                        borderRadius: "15px",
-                                    },
-                                },
-                            },
-                        }}
-                    />
-                </LocalizationProvider>
-
+        <>
+            <Navbarsec />
+            <Container maxWidth="sm">
                 <Box
                     sx={{
-                        border: "2px dashed #ccc",
-                        borderRadius: "15px",
-                        textAlign: "center",
-                        p: 4,
-                        mt: 2,
-                        mb: 1,
-                        color: "gray",
+                        mt: 5,
+                        p: 3,
+                        borderRadius: 2,
+                        boxShadow: 3,
+                        backgroundColor: "#fff",
                     }}
                 >
-                    <Typography variant="body2">อัปโหลดไฟล์</Typography>
-                    <Typography variant="caption" display="block" sx={{ mt: 1 }}>
-                        PDF DOCX TXT ≤ 10 MB
+                    <Typography
+                        variant="h5"
+                        align="center"
+                        gutterBottom
+                        fontWeight="bold"
+                    >
+                        แบบฟอร์มการนำเสนอโครงงาน
                     </Typography>
 
-                    <Button
-                        variant="contained"
-                        component="label"
-                        sx={{ mt: 2, borderRadius: "20px", backgroundColor: "#2D2C95" }}
-                    >
-                        เลือกไฟล์
-                        <input
-                            type="file"
-                            hidden
-                            onChange={handleFileChange}
-                            accept=".pdf,.docx,.txt"
-                        />
-                    </Button>
 
-                    {fileName && (
-                        <Typography variant="body2" sx={{ mt: 2, color: "black" }}>
-                            📄 {fileName}
+                    <FormControl fullWidth margin="normal">
+                        <InputLabel>เลือกประเภทโครงงาน</InputLabel>
+                        <Select defaultValue="">
+                            <MenuItem value="">เลือกประเภท</MenuItem>
+                            {projectTypes.map((type) => (
+                                <MenuItem key={type} value={type}>
+                                    {type}
+                                </MenuItem>
+                            ))}
+                        </Select>
+                    </FormControl>
+
+                    <TextField
+                        label="ชื่อโครงงาน"
+                        fullWidth
+                        margin="normal"
+                        sx={{ "& .MuiOutlinedInput-root": { borderRadius: "15px" } }}
+                    />
+
+
+                    <TextField
+                        label="ขอบเขตโครงงาน"
+                        fullWidth
+                        margin="normal"
+                        multiline
+                        rows={4}
+                        sx={{ "& .MuiOutlinedInput-root": { borderRadius: "15px" } }}
+                    />
+
+
+                    <Box sx={{ mt: 2 }}>
+                        <Typography fontWeight="bold" sx={{ mb: 1 }}>
+                            อาจารย์ที่ปรึกษา
                         </Typography>
-                    )}
-                </Box>
 
-                <Box sx={{ display: "flex", justifyContent: "center", mt: 3 }}>
-                    <Button
-                        variant="outlined"
-                        color="inherit"
-                        sx={{ mr: 2, borderRadius: "20px", width: "25%" }}
-                        onClick={handleBack}
-                    >
-                        ย้อนกลับ
-                    </Button>
-                    <Button
-                        variant="contained"
+                        {advisors.map((advisor, index) => (
+                            <Box
+                                key={index}
+                                sx={{
+                                    display: "flex",
+                                    alignItems: "center",
+                                    gap: 1,
+                                    mb: 2,
+                                }}
+                            >
+                                <FormControl fullWidth>
+                                    <InputLabel>
+                                        {index === 0
+                                            ? "อาจารย์ที่ปรึกษา"
+                                            : `อาจารย์ที่ปรึกษาร่วม ${index}`}
+                                    </InputLabel>
+                                    <Select
+                                        value={advisor}
+                                        onChange={handleAdvisorChange(index)}
+                                    >
+                                        <MenuItem value="">เลือกอาจารย์</MenuItem>
+                                        {professorList.map((name) => (
+                                            <MenuItem
+                                                key={name}
+                                                value={name}
+                                                disabled={advisors.includes(name)}
+                                            >
+                                                {name}
+                                            </MenuItem>
+                                        ))}
+                                    </Select>
+                                </FormControl>
+
+
+                                {index > 0 && (
+                                    <Button
+                                        color="error"
+                                        onClick={() => handleRemoveAdvisor(index)}
+                                    >
+                                        ลบ
+                                    </Button>
+                                )}
+                            </Box>
+                        ))}
+
+
+                        {advisors.length < 3 && (
+                            <Box sx={{ textAlign: "center", mt: 1 }}>
+                                <Button
+                                    variant="outlined"
+                                    onClick={handleAddAdvisor}
+                                    sx={{
+                                        borderRadius: "20px",
+                                        color: "#2D2C95",
+                                        borderColor: "#2D2C95",
+                                    }}
+                                >
+                                    + เพิ่มอาจารย์ที่ปรึกษาร่วม
+                                </Button>
+                            </Box>
+                        )}
+                    </Box>
+
+
+                    <LocalizationProvider dateAdapter={AdapterDateFns}>
+                        <DatePicker
+                            label="วันที่ยื่นโครงงาน"
+                            value={date}
+                            onChange={(newValue) => setDate(newValue)}
+                            slotProps={{
+                                textField: {
+                                    fullWidth: true,
+                                    margin: "normal",
+                                    sx: {
+                                        "& .MuiOutlinedInput-root": {
+                                            borderRadius: "15px",
+                                        },
+                                    },
+                                },
+                            }}
+                        />
+                    </LocalizationProvider>
+
+                    <Box
                         sx={{
-                            borderRadius: "20px",
-                            backgroundColor: "#2D2C95",
-                            width: "25%",
+                            border: "2px dashed #2D2C95",
+                            borderRadius: "15px",
+                            textAlign: "center",
+                            p: 4,
+                            mt: 2,
+                            mb: 1,
+                            color: "gray",
                         }}
-                        onClick={handleNext}
                     >
-                        ส่งข้อมูล
-                    </Button>
+                        <Typography variant="body2">อัปโหลดไฟล์</Typography>
+                        <Typography variant="caption" display="block" sx={{ mt: 1 }}>
+                            PDF DOCX TXT ≤ 10 MB
+                        </Typography>
+
+                        <Button
+                            variant="contained"
+                            component="label"
+                            sx={{ mt: 2, borderRadius: "20px", backgroundColor: "#2D2C95" }}
+                        >
+                            เลือกไฟล์
+                            <input
+                                type="file"
+                                hidden
+                                onChange={handleFileChange}
+                                accept=".pdf,.docx,.txt"
+                            />
+                        </Button>
+
+                        {fileName && (
+                            <Typography variant="body2" sx={{ mt: 2, color: "black" }}>
+                                📄 {fileName}
+                            </Typography>
+                        )}
+                    </Box>
+
+                    <Box sx={{ display: "flex", justifyContent: "center", mt: 3 }}>
+                        <Button
+                            variant="outlined"
+                            color="inherit"
+                            sx={{ mr: 2, borderRadius: "20px", width: "25%" }}
+                            onClick={handleBack}
+                        >
+                            ย้อนกลับ
+                        </Button>
+                        <Button
+                            variant="contained"
+                            sx={{
+                                borderRadius: "20px",
+                                backgroundColor: "#2D2C95",
+                                width: "25%",
+                            }}
+                            onClick={handleNext}
+                        >
+                            ส่งข้อมูล
+                        </Button>
+                    </Box>
                 </Box>
-            </Box>
-        </Container>
+            </Container>
+        </>
     );
 };
 

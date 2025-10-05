@@ -1,21 +1,15 @@
 import {
     AppBar,
     Toolbar,
-    Tabs,
-    Tab,
     Box,
     Button,
     Typography,
 } from "@mui/material";
-import { useNavigate, useLocation } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import fitmLogo from "../../assets/fitmLogo.png";
 
-function Navbar() {
+function Navbarsec() {
     const navigate = useNavigate();
-    const location = useLocation();
-
-    const paths = ["/project-info", "/project-update", "/profile"];
-    const currentTab = paths.indexOf(location.pathname);
 
     const handleLogout = () => {
         navigate("/");
@@ -56,44 +50,7 @@ function Navbar() {
                         </Typography>
                     </Box>
 
-                    <Box
-                        sx={{
-                            position: "absolute",
-                            left: "50%",
-                            transform: "translateX(-50%)", // จัดให้อยู่ตรงกลางแท้
-                        }}
-                    >
-                        <Tabs
-                            value={currentTab === -1 ? 0 : currentTab}
-                            onChange={(_, newValue) => navigate(paths[newValue])}
-                            textColor="inherit"
-                            TabIndicatorProps={{ style: { display: "none" } }} 
-                            sx={{
-                                "& .MuiTab-root": {
-                                    textTransform: "none",
-                                    fontWeight: "bold",
-                                    fontSize: "1rem",
-                                    color: "white",
-                                    transition: "all 0.3s ease",
-                                },
-                                "& .MuiTab-root:hover": {
-                                    color: "#ffffffff",
-                                    transform: "scale(1.05)",
-                                },
-                                "& .Mui-selected": {
-                                    backgroundColor: "#005a54b3 !important",
-                                    borderRadius: "10px",
-                                },
-                            }}
-                        >
-                            <Tab label="โครงงาน" />
-                            <Tab label="บันทึกความก้าวหน้า" />
-                            <Tab label="Profile" />
-                        </Tabs>
-
-                    </Box>
-
-                    {/* ✅ ปุ่ม Logout */}
+                    {/* ปุ่ม Logout */}
                     <Button
                         color="inherit"
                         onClick={handleLogout}
@@ -118,9 +75,10 @@ function Navbar() {
                 </Toolbar>
             </AppBar>
 
+            {/* Offset Toolbar เพื่อไม่ให้เนื้อหาถูก AppBar ทับ */}
             <Toolbar />
         </>
     );
 }
 
-export default Navbar;
+export default Navbarsec;

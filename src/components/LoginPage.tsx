@@ -66,11 +66,12 @@ function LoginPage() {
                 position: "fixed",
                 top: 0,
                 left: 0,
-                width: "100vw", 
+                width: "100vw",
                 height: "100vh",
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
+                backgroundColor: "#f7f8fc", // 👈 โทนพื้นหลังอ่อน
                 backgroundImage: `url(${backgroundImage})`,
                 backgroundSize: "cover",
                 backgroundPosition: "center",
@@ -84,19 +85,21 @@ function LoginPage() {
                         p: 4,
                         borderRadius: 3,
                         textAlign: "center",
-                        backgroundColor: "rgba(255,255,255,0.9)",
+                        backgroundColor: "rgba(255, 255, 255, 0.95)", // 👈 กล่องขาวใสสะอาด
                     }}
                 >
                     <Box sx={{ mb: 2 }}>
-                        <img src={fitmLogo} alt="FITM Logo" style={{ maxHeight: 80 }} /> </Box>
-                    <Typography variant="h6" sx={{ fontWeight: "bold", mb: 1 }}>
+                        <img src={fitmLogo} alt="FITM Logo" style={{ maxHeight: 80 }} />
+                    </Box>
+
+                    <Typography variant="h6" sx={{ fontWeight: "bold", mb: 1, color: "#2D2C95" }}>
                         ระบบการจัดการข้อมูลโครงการงานพิเศษ <br />
                         และโครงการงานสหกิจ
                     </Typography>
 
                     <Box
                         sx={{
-                            backgroundColor: "#08076B",
+                            backgroundColor: "#2D2C95", // 👈 สีหลักเข้ากับทุกหน้า
                             borderRadius: 3,
                             p: 3,
                             mt: 2,
@@ -145,10 +148,14 @@ function LoginPage() {
                             onClick={handleLogin}
                             sx={{
                                 mt: 2,
-                                bgcolor: "red",
-                                "&:hover": { bgcolor: "darkred" },
+                                bgcolor: "#03ffeeb3",
+                                "&:hover": { bgcolor: "#009f95b3" }, // เฉดเข้มขึ้นตอน hover
                                 width: "60%",
                                 borderRadius: 5,
+                                color: "#fff",
+                                fontWeight: "bold",
+                                boxShadow: "0 4px 10px rgba(0,0,0,0.2)", // เพิ่มมิติให้ดูนูน
+                                transition: "0.3s",
                             }}
                         >
                             ลงชื่อเข้าใช้
@@ -163,10 +170,13 @@ function LoginPage() {
                             </Alert>
                         )}
                     </Box>
+
                     <Box sx={{ mt: 3, textAlign: "left", fontSize: 14 }}>
-                        <Typography variant="subtitle2" sx={{ fontWeight: "bold" }}> การเข้าสู่ระบบ </Typography>
+                        <Typography variant="subtitle2" sx={{ fontWeight: "bold", color: "#2D2C95" }}>
+                            การเข้าสู่ระบบ
+                        </Typography>
                         <Typography>นักศึกษา: รหัสนักศึกษา</Typography>
-                        <Typography> อาจารย์-กรรมการ: รหัสพนักงาน รหัสบัตร </Typography>
+                        <Typography>อาจารย์-กรรมการ: รหัสพนักงาน / รหัสบัตร</Typography>
                         <Typography>password: รหัสบัตรประชาชน</Typography>
                     </Box>
                 </Paper>
@@ -174,4 +184,5 @@ function LoginPage() {
         </Box>
     );
 }
+
 export default LoginPage;

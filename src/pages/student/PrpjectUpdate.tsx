@@ -20,11 +20,13 @@ function ProjectUpdatePage() {
   const [date, setDate] = useState("");
   const [week, setWeek] = useState(1);
   const [fileName, setFileName] = useState<string>("");
+
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     if (event.target.files && event.target.files.length > 0) {
       setFileName(event.target.files[0].name);
     }
   };
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     console.log({
@@ -33,6 +35,7 @@ function ProjectUpdatePage() {
       date,
       week,
     });
+    alert("บันทึกความก้าวหน้าเรียบร้อย");
     navigate("/project-info");
   };
 
@@ -41,13 +44,25 @@ function ProjectUpdatePage() {
       <Navbar />
       <Box
         sx={{
-          maxWidth: 600,
-          mx: "auto",
-          mt: 5,
-          p: 3,
+          backgroundColor: "#f5f7ff",
+          minHeight: "100vh",
+          py: 5,
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "flex-start",
         }}
       >
-        <Paper elevation={3} sx={{ p: 4 }}>
+        <Paper
+          elevation={4}
+          sx={{
+            width: "80%",
+            maxWidth: 700,
+            p: 5,
+            borderRadius: 4,
+            boxShadow: 3,
+            backgroundColor: "white",
+          }}
+        >
           <Typography
             variant="h5"
             gutterBottom
@@ -55,33 +70,46 @@ function ProjectUpdatePage() {
               textAlign: "center",
               mb: 3,
               fontWeight: "bold",
+              color: "#2D2C95",
             }}
           >
             บันทึกความก้าวหน้า
           </Typography>
 
           <form onSubmit={handleSubmit}>
-            <Typography sx={{ mb: 1 }}>อัพโหลดไฟล์งาน</Typography>
+            {/* ส่วนอัปโหลดไฟล์ */}
+            <Typography sx={{ mb: 1, fontWeight: "bold", color: "#2D2C95" }}>
+              อัพโหลดไฟล์งาน
+            </Typography>
             <Box
               sx={{
-                border: "2px dashed #ccc",
+                border: "2px dashed #2D2C95",
                 borderRadius: "15px",
                 textAlign: "center",
                 p: 4,
                 mt: 2,
-                mb: 1,
-                color: "gray",
+                mb: 3,
+                color: "#2D2C95",
+                backgroundColor: "#f9fbff",
               }}
             >
               <Typography variant="body2">อัปโหลด File</Typography>
               <Typography variant="caption" display="block" sx={{ mt: 1 }}>
-                PDF DOCX TXT &nbsp; ≤10 MB
+                รองรับไฟล์: PDF DOCX TXT &nbsp; ≤10 MB
               </Typography>
 
               <Button
                 variant="contained"
                 component="label"
-                sx={{ mt: 2, borderRadius: "20px", backgroundColor: "#2D2C95" }}
+                sx={{
+                  mt: 2,
+                  borderRadius: "20px",
+                  backgroundColor: "#2D2C95",
+                  textTransform: "none",
+                  fontWeight: "bold",
+                  px: 3,
+                  "&:hover": { backgroundColor: "#1d1c75" },
+                }}
               >
                 เลือกไฟล์
                 <input
@@ -99,8 +127,10 @@ function ProjectUpdatePage() {
               )}
             </Box>
 
-
-            <Typography sx={{ mb: 1 }}>บันทึกความก้าวหน้า</Typography>
+            {/* ช่องกรอกบันทึกความก้าวหน้า */}
+            <Typography sx={{ mb: 1, fontWeight: "bold", color: "#2D2C95" }}>
+              บันทึกความก้าวหน้า
+            </Typography>
             <TextField
               fullWidth
               multiline
@@ -108,10 +138,15 @@ function ProjectUpdatePage() {
               value={note}
               onChange={(e) => setNote(e.target.value)}
               placeholder="รายละเอียดความก้าวหน้า..."
-              sx={{ mb: 3 }}
+              sx={{
+                mb: 3,
+                backgroundColor: "#f9fbff",
+                borderRadius: 2,
+              }}
             />
 
-            <Box sx={{ display: "flex", gap: 2, mb: 3 }}>
+            {/* ช่องวันที่และสัปดาห์ */}
+            <Box sx={{ display: "flex", gap: 2, mb: 4 }}>
               <TextField
                 label="วันที่ส่งความก้าวหน้า"
                 type="date"
@@ -137,16 +172,20 @@ function ProjectUpdatePage() {
               </FormControl>
             </Box>
 
-            <Box sx={{ textAlign: "right" }}>
+            {/* ปุ่มบันทึก */}
+            <Box sx={{ textAlign: "center" }}>
               <Button
                 type="submit"
                 variant="contained"
                 sx={{
                   backgroundColor: "#2D2C95",
-                  px: 4,
-                  borderRadius: "20px",
+                  px: 5,
+                  py: 1,
+                  borderRadius: "30px",
+                  fontWeight: "bold",
+                  textTransform: "none",
+                  "&:hover": { backgroundColor: "#1d1c75" },
                 }}
-                onClick={() => { alert("บันทึกความก้าวหน้าเรียบร้อย"); navigate("/project-info"); }}
               >
                 บันทึก
               </Button>
@@ -159,4 +198,3 @@ function ProjectUpdatePage() {
 }
 
 export default ProjectUpdatePage;
-
