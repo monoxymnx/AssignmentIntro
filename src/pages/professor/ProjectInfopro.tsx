@@ -69,10 +69,10 @@ export default function ProjectInfoForProfessor() {
                         <Typography>ชื่อโครงงาน : ฝนกระเทียม</Typography>
                         <Typography>ประเภทโครงงาน : ทดลอง</Typography>
                         <Typography>
-                            ชื่อที่ปรึกษาโครงงาน : รศ.ปุณจันทร์ ประสิทธิยอด
+                            ชื่อที่ปรึกษาโครงงาน : ผศ.ดร.นิติการ นาคเจือทอง
                         </Typography>
                         <Typography>
-                            ชื่อที่ปรึกษาร่วม : ผศ.ปุลินภัทร์ ประสิทธินอก
+                            ชื่อที่ปรึกษาร่วม :รศ.ดร.อนิราช มิ่งขวัญ
                         </Typography>
                         <Typography>วันสอบโครงงาน : -</Typography>
                         <Typography>ชื่อผู้จัดทำ : นายปุลินภัทร ประสิทธินอก , นางสาวศุกาสิ ประสิทธิยอด</Typography>
