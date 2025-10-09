@@ -13,11 +13,16 @@ import {
     Container,
     Collapse,
     TextField,
+    Avatar,
 } from "@mui/material";
 import Navbar from "./Navbar";
 import { useState } from "react";
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import PersonIcon from "@mui/icons-material/Person";
+import BookIcon from "@mui/icons-material/Book";
+import CategoryIcon from "@mui/icons-material/Category";
+import EventIcon from "@mui/icons-material/Event";
 
 const progressData = [
     {
@@ -28,8 +33,8 @@ const progressData = [
         file: "fon.pdf",
         status: "ผ่าน",
         comments: [
-            { teacher: "อาจารย์ที่ปรึกษาโครงงาน", text: "กลับไปแก้ส่วนนี้มาใหม่" },
-            { teacher: "อาจารย์ที่ปรึกษาร่วม", text: "สู้ๆ นศ" },
+            { teacher: "รศ.ดร.อนิราช มิ่งขวัญ", text: "ทำได้ดีมาก", avatar: "N" },
+            { teacher: "ผศ.ดร.นิติการ นาคเจือทอง", text: "ส่วนนี้ดูดีแล้ว", avatar: "A" },
         ],
     },
     {
@@ -40,8 +45,8 @@ const progressData = [
         file: "fonweek2.pdf",
         status: "ผ่าน",
         comments: [
-            { teacher: "อาจารย์ที่ปรึกษาโครงงาน", text: "กลับไปแก้ส่วนนี้มาใหม่" },
-            { teacher: "อาจารย์ที่ปรึกษาร่วม", text: "สู้ๆ นศ" },
+            { teacher: "รศ.ดร.อนิราช มิ่งขวัญ", text: "ทำได้ดีมาก", avatar: "N" },
+            { teacher: "ผศ.ดร.นิติการ นาคเจือทอง", text: "ส่วนนี้ดูดีแล้ว", avatar: "A" },
         ],
     },
 ];
@@ -85,17 +90,17 @@ export default function ProjectInfoForInstructor() {
                         </Typography>
 
                         <Box mb={4} sx={{ ml: 3 }}>
-                            <Typography>ชื่อโครงงาน : ฝนกระเทียม</Typography>
-                            <Typography>ประเภทโครงงาน : ทดลอง</Typography>
-                            <Typography>
-                                ชื่อที่ปรึกษาโครงงาน : ผศ.ดร.นิติการ นาคเจือทอง
+                            <Typography sx={{ display: "flex", alignItems: "center" }}><BookIcon sx={{ mr: 1.5, color: 'primary.main' }} />ชื่อโครงงาน : ฝนกระเทียม</Typography>
+                            <Typography sx={{ display: "flex", alignItems: "center" }}><CategoryIcon sx={{ mr: 1.5, color: 'primary.main' }} />ประเภทโครงงาน : ทดลอง</Typography>
+                            <Typography sx={{ display: "flex", alignItems: "center" }}><EventIcon sx={{ mr: 1.5, color: 'primary.main' }} />วันสอบโครงงาน : -</Typography>
+                            <Typography sx={{ display: "flex", alignItems: "center" }}>
+                                <PersonIcon sx={{ mr: 1.5, color: 'primary.main' }} />ชื่อที่ปรึกษาโครงงาน : ผศ.ดร.นิติการ นาคเจือทอง
                             </Typography>
-                            <Typography>
-                                ชื่อที่ปรึกษาร่วม : รศ.ดร.อนิราช มิ่งขวัญ
+                            <Typography sx={{ display: "flex", alignItems: "center" }}>
+                                <PersonIcon sx={{ mr: 1.5, color: 'primary.main' }} />ชื่อที่ปรึกษาร่วม : รศ.ดร.อนิราช มิ่งขวัญ
                             </Typography>
-                            <Typography>วันสอบโครงงาน : -</Typography>
-                            <Typography>
-                                ชื่อผู้จัดทำ : นายปุลินภัทร ประสิทธินอก , นางสาวศุกาสิ ประสิทธิยอด
+                            <Typography sx={{ display: "flex", alignItems: "center" }}>
+                                <PersonIcon sx={{ mr: 1.5, color: 'primary.main' }} /> ชื่อผู้จัดทำ : นายปุลินภัทร ประสิทธินอก , นางสาวศุกาสิ ประสิทธิยอด
                             </Typography>
                         </Box>
 
@@ -162,50 +167,31 @@ export default function ProjectInfoForInstructor() {
                                                         onClick={() =>
                                                             setOpenRow(openRow === index ? null : index)
                                                         }
+                                                        sx={{
+                                                            width:"10vh",
+                                                        }}
                                                     >
-                                                        {openRow === index ? "ซ่อน" : "ดู"}
+                                                        {openRow === index ? "ซ่อน" : "กดเพือดู"}
                                                     </Button>
                                                 </TableCell>
                                             </TableRow>
 
                                             <TableRow>
-                                                <TableCell colSpan={7} sx={{ p: 0 }}>
-                                                    <Collapse
-                                                        in={openRow === index}
-                                                        timeout="auto"
-                                                        unmountOnExit
-                                                    >
-                                                        <Box
-                                                            sx={{
-                                                                backgroundColor: "#f0f3ff",
-                                                                p: 2,
-                                                                borderRadius: "0 0 15px 15px",
-                                                            }}
-                                                        >
-                                                            <Table size="small">
-                                                                <TableHead>
-                                                                    <TableRow>
-                                                                        {row.comments.map((c, i) => (
-                                                                            <TableCell
-                                                                                key={i}
-                                                                                align="center"
-                                                                                sx={{ fontWeight: "bold" }}
-                                                                            >
-                                                                                {c.teacher}
-                                                                            </TableCell>
-                                                                        ))}
-                                                                    </TableRow>
-                                                                </TableHead>
-                                                                <TableBody>
-                                                                    <TableRow>
-                                                                        {row.comments.map((c, i) => (
-                                                                            <TableCell key={i} align="center">
-                                                                                {c.text}
-                                                                            </TableCell>
-                                                                        ))}
-                                                                    </TableRow>
-                                                                </TableBody>
-                                                            </Table>
+                                                <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={7}>
+                                                    <Collapse in={openRow === index} timeout="auto" unmountOnExit>
+                                                        <Box sx={{ margin: 2, p: 2, backgroundColor: '#f9f9f9', borderRadius: '12px' }}>
+                                                            <Typography variant="h6" gutterBottom component="div" sx={{ fontWeight: 'bold', mb: 2 }}>
+                                                                คอมเม้นต์
+                                                            </Typography>
+                                                            {row.comments.map((c, i) => (
+                                                                <Box key={i} sx={{ display: 'flex', alignItems: 'center', mb: 2 }}>
+                                                                    <Avatar sx={{ bgcolor: '#2D2C95', mr: 2 }}>{c.avatar}</Avatar>
+                                                                    <Box>
+                                                                        <Typography variant="subtitle2" sx={{ fontWeight: 'bold' }}>{c.teacher}</Typography>
+                                                                        <Typography variant="body2">{c.text}</Typography>
+                                                                    </Box>
+                                                                </Box>
+                                                            ))}
                                                         </Box>
                                                     </Collapse>
                                                 </TableCell>

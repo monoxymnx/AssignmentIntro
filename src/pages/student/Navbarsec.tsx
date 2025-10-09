@@ -17,7 +17,7 @@ function Navbarsec() {
 
     return (
         <>
-            <AppBar position="fixed" sx={{ background: "#00aa9fb3", width: "100%" }}>
+            <AppBar position="fixed" sx={{ background: "#2D2C95", width: "100%" }}>
                 <Toolbar
                     sx={{
                         display: "flex",
@@ -33,6 +33,8 @@ function Navbarsec() {
                             style={{
                                 maxHeight: 60,
                                 borderRadius: "8px",
+                                backgroundColor: "white",
+                                
                             }}
                         />
                         <Typography

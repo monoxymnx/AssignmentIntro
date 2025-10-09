@@ -12,6 +12,8 @@ import {
 } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import Navbar from "./Navbar";
+import InsertDriveFileIcon from '@mui/icons-material/InsertDriveFile';
+import CreateIcon from '@mui/icons-material/Create';
 
 function ProjectUpdatePage() {
   const navigate = useNavigate();
@@ -78,8 +80,8 @@ function ProjectUpdatePage() {
 
           <form onSubmit={handleSubmit}>
             {/* ส่วนอัปโหลดไฟล์ */}
-            <Typography sx={{ mb: 1, fontWeight: "bold", color: "#2D2C95" }}>
-              อัพโหลดไฟล์งาน
+            <Typography sx={{ mb: 1, fontWeight: "bold", color: "#2D2C95",display: "flex", alignItems: "center", }}>
+              <InsertDriveFileIcon/>อัพโหลดไฟล์งาน
             </Typography>
             <Box
               sx={{
@@ -128,7 +130,8 @@ function ProjectUpdatePage() {
             </Box>
 
             {/* ช่องกรอกบันทึกความก้าวหน้า */}
-            <Typography sx={{ mb: 1, fontWeight: "bold", color: "#2D2C95" }}>
+            <Typography sx={{ mb: 1, fontWeight: "bold", color: "#2D2C95",display: "flex", alignItems: "center" }}>
+              <CreateIcon/>
               บันทึกความก้าวหน้า
             </Typography>
             <TextField
